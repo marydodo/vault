@@ -12,7 +12,7 @@
 
 [ \ ] Start a Vault *dev server*
 
-  * **Dev server**: a built-in, pre-configured server. Not very secure but useful for local use of Vault!
+  * **DEV SERVER**: a built-in, pre-configured server. Not very secure but useful for local use of Vault!
   * To start the dev server, run`vault server -dev`
   * Configure Vault client to talk to dev server
     - `export VAULT_ADDR='http://127.0.0.1:8200'`taken from output when the dev server was started. Vault CLI determines which Vault servers to send requests using `VAULT_ADDR`
@@ -47,8 +47,11 @@
 
 [ ] Use the HTTP APIs with Authentication
 
-
 ## Questions, comments, concerns, etc.
+
+### What are Secrets Engines?
+
+Vault behaves like a virtual file system. READ, WRITE, DELETE list operations are forwarded to corresponding secrets engines. Secrets engines then decide how to react to those operations.
 
 ### What is Vault?
 
@@ -62,15 +65,17 @@ Vault provides a central location which promises to encrypt everything both at r
 
 Vaults key feature to help solve the task of securely managing access to secrets are:
 
-**Dynamic Secrets**
+**DYNAMIC SECRETS**
 
-**Data Encryption**
+**DATA ENCRYPTION**
 
-**Revocation**
+**REVOCATION**
 
-**Secure Secret Storage**
+**SECURE SECRET STORAGE**
 
-**Leasing and Renewal**
+**LEASING AND RENEWAL**
+
+**REVOCATION**
 
 ### Why use Vault
 
