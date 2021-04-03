@@ -49,10 +49,6 @@
 
 ## Questions, comments, concerns, etc.
 
-### What are Secrets Engines?
-
-Vault behaves like a virtual file system. READ, WRITE, DELETE list operations are forwarded to corresponding secrets engines. Secrets engines then decide how to react to those operations.
-
 ### What is Vault?
 
 Vault is a tool for securely managing access to secrets.
@@ -80,3 +76,7 @@ Vaults key feature to help solve the task of securely managing access to secrets
 ### Why use Vault
 
 Vault allows a granular approach to credentials and
+
+### What are Secrets Engines?
+
+Vault behaves like a virtual file system. READ, WRITE, DELETE list operations are forwarded to corresponding secrets engines. Secrets engines then decide how to react to those operations.
