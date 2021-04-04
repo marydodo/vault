@@ -85,9 +85,9 @@ This creates a role named **"my-role"**. When users generate credentials against
       - Use command `$ vault read aws/creds/my-role` which will read from the `/creds` endpoint with the name of the role.
       - Each time the command is run, a new set of credentials will generate.
 
-[ ] Deploy Vault
+#### [ ] Deploy Vault
 
-[ ] Use the HTTP APIs with Authentication
+#### [ ] Use the HTTP APIs with Authentication
 
 ## Questions, comments, concerns, etc.
 
