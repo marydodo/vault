@@ -79,7 +79,7 @@ $ vault write aws/roles/my-role \
 EOF
 ```
 
-      - This creates a role named **"my-role"**. When users generate credentials against this role, Vault will create an IAM user and attach the specified policy document to the IAM user. Vault will then create an access key and secret key for the IAM user and return these credentials.
+    - This creates a role named **"my-role"**. When users generate credentials against this role, Vault will create an IAM user and attach the specified policy document to the IAM user. Vault will then create an access key and secret key for the IAM user and return these credentials.
 
   * To generate a new aws credential
       - Use command `$ vault read aws/creds/my-role` which will read from the `/creds` endpoint with the name of the role.
