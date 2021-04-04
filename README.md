@@ -2,7 +2,7 @@
 
 ## Project Tasks
 
-[ \ ] Install Vault
+#### [ \ ] Install Vault
 
  * Add HashiCorp GPG key
  * Add official HashiCorp Linux repository
@@ -10,7 +10,7 @@
  * Verify the installation
    - run `vault`
 
-[ \ ] Start a Vault *dev server*
+#### [ \ ] Start a Vault *dev server*
 
   * **DEV SERVER**: a built-in, pre-configured server. Not very secure but useful for local use of Vault!
   * To start the dev server, run`vault server -dev`
@@ -20,7 +20,7 @@
   * Verify that the server is running
     - Run `vault status`
 
- [ \ ] Write Your First Secret
+#### [ \ ] Write Your First Secret
 
   *  Use command `vault kv put <path> <key>=<value>`
      - Writes a secret to Key/Value v2 secrets engine
@@ -29,7 +29,7 @@
     - Multiple pieces of data can be written all at once `vault kv put secret/hello foo=world excited=yes`
     - Pre-existing data at the path can be replaced with a new version. The output of the `vault kv put` commands defines the version.
 
-[ \  ] Getting a Secret  
+#### [ \  ] Getting a Secret  
 
   * Use command `vault kv get <path>` to retrieve secrets
     - example `vault kv get secret/hello`
@@ -38,12 +38,12 @@
   * To get an optional JSON output, use the `jq` tool
     - example `vault kv get -field=excited secret/hello | jq -r .data.data.excited`
 
-[ \ ] Deleting a Secret
+#### [ \ ] Deleting a Secret
 
    * Use command `vault kv delete`
       - example `vault kv delete secret/hello`
 
-[ \ ] Enable AWS Secrets Engine ([Dynamic Secrets](#dynamic-secrets))
+#### [ \ ] Enable AWS Secrets Engine ([Dynamic Secrets](#dynamic-secrets))
 
     *  To enable use command `vault secrets enable aws`
       - By default, the path will be `aws/`
@@ -56,7 +56,7 @@
     region=us-east-1
     ```
 
-[ \ ] Configure AWS Secrets Engine
+#### [ \ ] Configure AWS Secrets Engine
 
  * Configure a Vault role that maps to a set of permissions in AWS as well as AWS credential type. When users generate credentials, they are generated against the specified role.
 
