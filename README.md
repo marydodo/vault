@@ -43,7 +43,45 @@
    * Use command `vault kv delete`
       - example `vault kv delete secret/hello`
 
-[ ] Enable/Configure AWS Secrets Engine
+[ \ ] Enable AWS Secrets Engine ([Dynamic Secrets](#dynamic-secrets))
+
+    *  To enable use command `vault secrets enable aws`
+      - By default, the path will be `aws/`
+      - Use `-path` to define a different paths
+    * Configure creds that Vault will sue to communicate with AWS to generate IAM credentials
+    ```
+    $vault write aws/config/root \
+    access_key=<key-here> \
+    secret_key=<key-here> \
+    region=us-east-1
+    ```
+
+[ \ ] Configure AWS Secrets Engine
+
+ * Configure a Vault role that maps to a set of permissions in AWS as well as AWS credential type. When users generate credentials, they are generated against the specified role.
+
+ex:
+```
+$ vault write aws/roles/my-role \
+    credential_type=iam_user \
+    policy_document=-<<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "ec2:*",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+```
+      - This creates a role named **"my-role"**. When users generate credentials against this role, Vault will create an IAM user and attach the specified policy document to the IAM user. Vault will then create an access key and secret key for the IAM user and return these credentials.
+
+  * To **GENERATE A NEW CREDENTIAL**
+      - Use command `$ vault read aws/creds/my-role` which will read from the `/creds` endpoint with the name of the role.
+      - Each time the command is run, a new set of credentials will generate.
 
 [ ] Deploy Vault
 
@@ -53,10 +91,9 @@
 
 ### What is Vault?
 
-Vault is a tool for securely managing access to secrets. It is a storage for all secrets. Vault uses an API server which performs operations and client requests on secrets. Vault uses multiple types of [secret engines](#what-are-secrets-engines) which can support each type of secret that can be supported.
+Vault is a tool for securely managing access to secrets. It is a centralized storage for all secrets. Vault uses an API server which performs operations and client requests on secrets. Vault uses multiple types of [secret engines](#what-are-secrets-engines) which can support each type of secret that can be supported.
 
 Secrets are sets of different credentials such as *authentication* to a system or *authorization* to a system such as database usernames and passwords, API tokens, or TLS certificates.
-
 
 ### What problems does Vault solve?
 
@@ -64,17 +101,16 @@ Vault addresses the problem of managing sensitive information. Database credenti
 
 Vaults key feature to help solve the task of securely managing access to secrets are:
 
-**DYNAMIC SECRETS**
+#### **DYNAMIC SECRETS**
+Dynamic secrets are generated when they are accessed. This means that the dynamic secret does not exist until they are read. This reduces the risk of theft or another client using the same secrets.  Built-in vocation allows dynamic secrets to be revoke3d immediately after use, minimizing the lifespan of the secret.
 
-**DATA ENCRYPTION**
+#### **DATA ENCRYPTION**
 
-**REVOCATION**
+#### **REVOCATION**
 
-**SECURE SECRET STORAGE**
+#### **SECURE SECRET STORAGE**
 
-**LEASING AND RENEWAL**
-
-**REVOCATION**.
+#### **LEASING AND RENEWAL**
 
 ### What are Secrets Engines?
 
