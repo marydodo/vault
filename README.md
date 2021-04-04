@@ -43,6 +43,8 @@
    * Use command `vault kv delete`
       - example `vault kv delete secret/hello`
 
+[ ] Enable/Configure AWS Secrets Engine
+
 [ ] Deploy Vault
 
 [ ] Use the HTTP APIs with Authentication
@@ -51,13 +53,18 @@
 
 ### What is Vault?
 
-Vault is a tool for securely managing access to secrets.
+Vault is a tool for securely managing access to secrets. It is a storage for all secrets. Vault uses an API server which performs operations and client requests on secrets. Vault uses multiple types of [secret engines](### What are Secrets Engines?) which can support each type of secret that can be supported.
 
 Secrets are sets of different credentials such as *authentication* to a system or *authorization* to a system such as database usernames and passwords, API tokens, or TLS certificates.
 
+
 ### What problems does Vault solve?
 
-Vault provides a central location which promises to encrypt everything both at rest inside of Vault as well as in transit between Vault and any of the clients that want to access it.
+Vault addresses the problem of managing sensitive information.
+
+Database credentials and API Keys are some examples of sensitive information that we need to store and make available to our applications in a secure way.
+
+Vault controls all aspects of a sensitive piece of information: its generation, storage, usage and, last but not least, its revocation. Vault encrypts all data with an encryption key before writing it to the store. This encryption key is encrypted by yet another key – the master key.
 
 Vaults key feature to help solve the task of securely managing access to secrets are:
 
@@ -71,12 +78,10 @@ Vaults key feature to help solve the task of securely managing access to secrets
 
 **LEASING AND RENEWAL**
 
-**REVOCATION**
-
-### Why use Vault
-
-Vault allows a granular approach to credentials and
+**REVOCATION**.
 
 ### What are Secrets Engines?
 
-Vault behaves like a virtual file system. READ, WRITE, DELETE list operations are forwarded to corresponding secrets engines. Secrets engines then decide how to react to those operations.
+Vault behaves like a virtual file system. READ, WRITE, DELETE list operations are forwarded to corresponding secrets engines. Secrets engines then decide what to do with those operations.
+
+"...enables Vault to interface directly with physical systems, databases, HSMs, etc. But in addition to these physical systems, Vault can interact with more unique environments like AWS IAM, dynamic SQL user creation, etc. all while using the same read/write interface."
