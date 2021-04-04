@@ -86,6 +86,7 @@ This creates a role named **"my-role"**. When users generate credentials against
       - Each time the command is run, a new set of credentials will generate.
 
 #### [ ] Deploy Vault
+>> Press Ctrl+C to terminate the dev server that is running at http://127.0.0.1:8200 before proceeding <<<
 
 #### [ ] Use the HTTP APIs with Authentication
 
