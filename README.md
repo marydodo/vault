@@ -53,7 +53,7 @@
 
 ### What is Vault?
 
-Vault is a tool for securely managing access to secrets. It is a storage for all secrets. Vault uses an API server which performs operations and client requests on secrets. Vault uses multiple types of [secret engines](### What are Secrets Engines?) which can support each type of secret that can be supported.
+Vault is a tool for securely managing access to secrets. It is a storage for all secrets. Vault uses an API server which performs operations and client requests on secrets. Vault uses multiple types of [secret engines](# What are Secrets Engines?) which can support each type of secret that can be supported.
 
 Secrets are sets of different credentials such as *authentication* to a system or *authorization* to a system such as database usernames and passwords, API tokens, or TLS certificates.
 
