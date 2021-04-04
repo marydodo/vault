@@ -61,6 +61,7 @@
  * Configure a Vault role that maps to a set of permissions in AWS as well as AWS credential type. When users generate credentials, they are generated against the specified role.
 
 ex:
+
 ```
 $ vault write aws/roles/my-role \
     credential_type=iam_user \
@@ -77,6 +78,7 @@ $ vault write aws/roles/my-role \
 }
 EOF
 ```
+
       - This creates a role named **"my-role"**. When users generate credentials against this role, Vault will create an IAM user and attach the specified policy document to the IAM user. Vault will then create an access key and secret key for the IAM user and return these credentials.
 
   * To generate a new aws credential
