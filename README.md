@@ -60,11 +60,7 @@ Secrets are sets of different credentials such as *authentication* to a system o
 
 ### What problems does Vault solve?
 
-Vault addresses the problem of managing sensitive information.
-
-Database credentials and API Keys are some examples of sensitive information that we need to store and make available to our applications in a secure way.
-
-Vault controls all aspects of a sensitive piece of information: its generation, storage, usage and, last but not least, its revocation. Vault encrypts all data with an encryption key before writing it to the store. This encryption key is encrypted by yet another key – the master key.
+Vault addresses the problem of managing sensitive information. Database credentials and API Keys are some examples of sensitive information that we need to store and make available to our applications in a secure way. Vault controls all aspects of a sensitive piece of information: its generation, storage, usage and its revocation. Applications will not have to store them at the application level. Instead, applications can call for the secrets to Vault.  Vault encrypts all data with an encryption key before storing the secret. This key is then encrypted by another key. By using this model, only encrypted versions of they key are shared between applications and Vault, ensuring encryption at rest at the application level.
 
 Vaults key feature to help solve the task of securely managing access to secrets are:
 
