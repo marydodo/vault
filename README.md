@@ -108,12 +108,16 @@ Vaults key feature to help solve the task of securely managing access to secrets
 Dynamic secrets are generated when they are accessed. This means that the dynamic secret does not exist until they are read. This reduces the risk of theft or another client using the same secrets.  Built-in vocation allows dynamic secrets to be revoke3d immediately after use, minimizing the lifespan of the secret.
 
 #### **DATA ENCRYPTION**
+Vault provides "encryption as a service" by encrypting data in transit (with TLS) and at rest (using AES 256-bitCBC encryption). Vault can encrypt and decrypt data without storing it, which allows security teams to define encryption parameters and developers to store the encrypted data without having to design their own encryption methods.
 
 #### **REVOCATION**
+Vault has built-in support for secret revocation at scale. Zthis means that Vault can revoke single secrets or a whole tree of secrets; for example a user that has multiple secrets of a particular type. Key rolling and system lock downs can be triggered in the case of intrusion. A real world example is 2FA where the keys get rotated after a certain amount of seconds.
 
 #### **SECURE SECRET STORAGE**
+KV secrets can be stored in Vault and can encrypt the secrets prior to writing them to storage. Gaining access to the raw storage isn't enough to access the secrets. Vault can write to disk, CONSUL, and more.
 
 #### **LEASING AND RENEWAL**
+Secrets in Vault can be given a lease associated with them. The lease can be set to automatically be revokes after any specified time. Secret renewals can be built-in via renew APIs.
 
 ### What are Secrets Engines?
 
